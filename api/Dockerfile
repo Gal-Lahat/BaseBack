@@ -1,0 +1,21 @@
+FROM node
+
+# Create app directory if it doesn't exist
+RUN mkdir -p /usr/src/app
+
+# Create app directory
+WORKDIR /usr/src/app
+
+# Install app dependencies
+COPY package*.json ./
+
+RUN npm install
+
+# Bundle app source
+COPY . .
+
+# Expose the port the app runs in
+EXPOSE 3000
+
+CMD npm run start
+
